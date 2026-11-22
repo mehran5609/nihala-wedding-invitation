@@ -1,8 +1,8 @@
-CSS-ONLY WEDDING INVITATION
+PLAIN BEIGE WEDDING INVITATION
 
-The design is built from CSS gradients, pseudo-elements, borders and CSS flower shapes.
-No supplied reference image is used as a background or embedded asset.
-Replace the placeholder couple names, date, time and venue in index.html.
+The page background is a single plain beige colour.
+The burgundy flower is cropped from the client's supplied reference photo and
+used only as a decorative transparent corner asset, not as a page background.
+Replace sample names, date, time and venue in index.html.
 
-To deploy on Vercel: upload this folder to GitHub and import the repository.
-It is a static site; no build command is required.
+Deploy the extracted folder through GitHub -> Vercel. Static site; no build command.
