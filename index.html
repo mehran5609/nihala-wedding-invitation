@@ -6,22 +6,13 @@
 <meta name="theme-color" content="#eee7dd">
 <title>Wedding Invitation</title>
 <style>
-:root{--beige:#eee7dd;--wine:#751b35;--ink:#66544b;--gold:#b49a7b}
+:root{--beige:#eee7dd;--wine:#74172f;--wine2:#982d48;--wine3:#4e1024;--ink:#66544b;--gold:#b49a7b}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--beige);color:var(--ink);font-family:Georgia,"Times New Roman",serif;overflow-x:hidden}
-.invitation{
- min-height:100svh;position:relative;display:flex;align-items:center;justify-content:center;
- padding:90px 9vw;background:#eee7dd;overflow:hidden;
-}
+.invitation{min-height:100svh;position:relative;display:flex;align-items:center;justify-content:center;padding:90px 9vw;background:var(--beige);overflow:hidden}
 .invitation:before{content:"";position:absolute;inset:14px;border:1px solid #c9b8a5;pointer-events:none}
 .invitation:after{content:"";position:absolute;inset:21px;border:1px solid #d8cabb;pointer-events:none}
-.flower{
- position:absolute;z-index:2;pointer-events:none;width:clamp(95px,18vw,190px);
- height:auto;object-fit:contain;filter:drop-shadow(0 2px 2px #4d172522)
-}
-.flower.top-left{top:0;left:0;transform:rotate(0deg);transform-origin:top left}
-.flower.bottom-right{bottom:0;right:0;transform:rotate(180deg);transform-origin:center}
 .content{position:relative;z-index:3;text-align:center;width:min(650px,100%);padding:50px 12px}
 .eyebrow{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#92775f}
 .ornament{font-size:25px;color:#a88b6d;margin:22px 0}
@@ -30,21 +21,98 @@ h1 span{display:block;font-size:.48em;font-style:italic;color:#a88b6d;margin:10p
 .message{font-size:clamp(14px,1.9vw,17px);line-height:1.9;color:var(--ink);max-width:440px;margin:22px auto}
 .date{font-size:clamp(17px,2.4vw,23px);letter-spacing:.18em;color:var(--wine);margin:28px 0 12px}
 .venue{font-size:13px;line-height:1.9;letter-spacing:.08em;color:var(--ink)}
-.details{min-height:45vh;display:grid;place-items:center;text-align:center;padding:65px 22px;background:#eee7dd}
+.details{min-height:45vh;display:grid;place-items:center;text-align:center;padding:65px 22px;background:var(--beige)}
 .details h2{font-size:clamp(30px,5vw,44px);font-weight:400;color:var(--wine)}
 .details p{line-height:1.9}
+/* CSS-drawn burgundy flower: layered velvet petals, folds and fine veins */
+.css-flower{
+ --size:clamp(130px,22vw,235px);
+ position:absolute;z-index:2;pointer-events:none;width:var(--size);height:var(--size);
+ top:-24px;left:-30px;filter:drop-shadow(2px 5px 4px #3b0b1d45);
+}
+.css-flower.bottom{top:auto;left:auto;right:-25px;bottom:-35px;transform:rotate(180deg) scale(.78)}
+.petal{
+ position:absolute;left:50%;top:50%;width:39%;height:62%;
+ transform-origin:50% 92%;
+ border-radius:78% 22% 68% 32% / 75% 38% 62% 25%;
+ background:
+  radial-gradient(ellipse at 52% 82%,#3e0b1d 0 4%,transparent 5%),
+  linear-gradient(102deg,transparent 0 39%,#d36b7e55 44%,transparent 50% 56%,#390b1c44 63%,transparent 69%),
+  radial-gradient(ellipse at 37% 23%,#bd566c 0,#8e2944 34%,#65142d 69%,#3e0a1e 100%);
+ border:1px solid #68142d;
+ box-shadow:inset 3px 2px 7px #e17d8a35,inset -5px -7px 12px #30081770;
+}
+.petal:after{
+ content:"";position:absolute;left:49%;top:12%;height:76%;width:1px;
+ background:linear-gradient(transparent,#e08a985e 25%,#e08a9833 65%,transparent);
+ transform:rotate(7deg);filter:blur(.25px)
+}
+.outer .petal:nth-child(1){transform:translate(-50%,-92%) rotate(0deg)}
+.outer .petal:nth-child(2){transform:translate(-50%,-92%) rotate(45deg)}
+.outer .petal:nth-child(3){transform:translate(-50%,-92%) rotate(90deg)}
+.outer .petal:nth-child(4){transform:translate(-50%,-92%) rotate(135deg)}
+.outer .petal:nth-child(5){transform:translate(-50%,-92%) rotate(180deg)}
+.outer .petal:nth-child(6){transform:translate(-50%,-92%) rotate(225deg)}
+.outer .petal:nth-child(7){transform:translate(-50%,-92%) rotate(270deg)}
+.outer .petal:nth-child(8){transform:translate(-50%,-92%) rotate(315deg)}
+.inner{position:absolute;inset:18%;transform:rotate(20deg)}
+.inner .petal{width:42%;height:65%;background:
+ linear-gradient(100deg,transparent 0 40%,#e17c8b55 46%,transparent 53%),
+ radial-gradient(ellipse at 36% 25%,#cf6a7d,#922a47 44%,#4b0c22 100%);
+ box-shadow:inset 2px 2px 6px #f3a0aa33,inset -4px -6px 9px #30081788;
+}
+.inner .petal:nth-child(1){transform:translate(-50%,-92%) rotate(0deg)}
+.inner .petal:nth-child(2){transform:translate(-50%,-92%) rotate(60deg)}
+.inner .petal:nth-child(3){transform:translate(-50%,-92%) rotate(120deg)}
+.inner .petal:nth-child(4){transform:translate(-50%,-92%) rotate(180deg)}
+.inner .petal:nth-child(5){transform:translate(-50%,-92%) rotate(240deg)}
+.inner .petal:nth-child(6){transform:translate(-50%,-92%) rotate(300deg)}
+.flower-center{
+ position:absolute;left:50%;top:50%;width:14%;height:14%;transform:translate(-50%,-50%);
+ border-radius:50%;background:radial-gradient(circle at 35% 30%,#f0d5a7 0 7%,#b88b55 16%,#5a1029 48%,#290613 75%);
+ border:2px solid #c69c6b;box-shadow:0 0 0 3px #64152b88,0 0 8px #2a0614;
+}
+.flower-center:after{content:"";position:absolute;inset:3px;border-radius:50%;border:1px dotted #f2d5a5}
+.leaf{
+ position:absolute;width:25%;height:12%;background:linear-gradient(90deg,#3d563a,#87906a,#344b34);
+ border-radius:100% 0 100% 0;z-index:-1;box-shadow:inset 0 1px 2px #d3d2a566;
+}
+.leaf.one{left:54%;top:12%;transform:rotate(-22deg)}
+.leaf.two{left:8%;top:65%;transform:rotate(42deg)}
+/* falling burgundy loose petals */
 .petals{position:fixed;inset:0;z-index:10;pointer-events:none;overflow:hidden}
-.petal{position:absolute;top:-35px;width:12px;height:19px;border-radius:75% 12% 70% 20%;background:linear-gradient(135deg,#a63d55,#74182f 65%,#4b1024);box-shadow:0 1px 3px #4b102433;animation:fall linear infinite}
+.falling-petal{position:absolute;top:-35px;width:12px;height:19px;border-radius:75% 12% 70% 20%;background:linear-gradient(135deg,#a63d55,#74182f 65%,#4b1024);box-shadow:0 1px 3px #4b102433;animation:fall linear infinite}
 @keyframes fall{0%{transform:translate3d(0,-5vh,0) rotate(0);opacity:0}10%{opacity:.85}50%{transform:translate3d(38px,50vh,0) rotate(220deg)}100%{transform:translate3d(-28px,110vh,0) rotate(510deg);opacity:.08}}
-@media(max-width:600px){.invitation{padding:80px 30px}.flower{width:105px}.content{padding:48px 4px}.message{max-width:290px}}
-@media(prefers-reduced-motion:reduce){.petal{display:none}html{scroll-behavior:auto}}
+@media(max-width:600px){.invitation{padding:80px 30px}.css-flower{--size:135px;top:-10px;left:-18px}.css-flower.bottom{right:-18px;bottom:-18px}.content{padding:48px 4px}.message{max-width:290px}}
+@media(prefers-reduced-motion:reduce){.falling-petal{display:none}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
 <div class="petals" id="petals" aria-hidden="true"></div>
 <section class="invitation">
- <img class="flower top-left" src="assets/reference-burgundy-flower.png" alt="">
- <img class="flower bottom-right" src="assets/reference-burgundy-flower.png" alt="">
+ <div class="css-flower" aria-hidden="true">
+  <div class="leaf one"></div><div class="leaf two"></div>
+  <div class="outer">
+   <i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="petal"></i>
+   <i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="petal"></i>
+  </div>
+  <div class="inner">
+   <i class="petal"></i><i class="petal"></i><i class="petal"></i>
+   <i class="petal"></i><i class="petal"></i><i class="petal"></i>
+  </div>
+  <div class="flower-center"></div>
+ </div>
+ <div class="css-flower bottom" aria-hidden="true">
+  <div class="outer">
+   <i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="petal"></i>
+   <i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="petal"></i>
+  </div>
+  <div class="inner">
+   <i class="petal"></i><i class="petal"></i><i class="petal"></i>
+   <i class="petal"></i><i class="petal"></i><i class="petal"></i>
+  </div>
+  <div class="flower-center"></div>
+ </div>
  <main class="content">
   <div class="eyebrow">Together with our families</div>
   <div class="ornament">❧</div>
@@ -62,7 +130,7 @@ h1 span{display:block;font-size:.48em;font-style:italic;color:#a88b6d;margin:10p
  <p><strong>VENUE NAME</strong><br>Full venue address, Kerala</p></div>
 </section>
 <script>
-(()=>{const layer=document.getElementById('petals');for(let i=0;i<23;i++){const p=document.createElement('i');p.className='petal';p.style.left=Math.random()*100+'%';p.style.animationDuration=9+Math.random()*13+'s';p.style.animationDelay=-Math.random()*22+'s';p.style.scale=.6+Math.random()*.8;layer.appendChild(p)}})();
+(()=>{const layer=document.getElementById('petals');for(let i=0;i<23;i++){const p=document.createElement('i');p.className='falling-petal';p.style.left=Math.random()*100+'%';p.style.animationDuration=9+Math.random()*13+'s';p.style.animationDelay=-Math.random()*22+'s';p.style.scale=.6+Math.random()*.8;layer.appendChild(p)}})();
 </script>
 </body>
 </html>
